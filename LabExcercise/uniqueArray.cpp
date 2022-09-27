@@ -1,36 +1,29 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 int main(){
-    int k=0;
-    int n;
+    int k;
+    int n, f=0;
+    int count=0;
+    int ctr=0;
     cout<<"Enter the size of first array : ";
     cin>>n;
     int arrayOfNumbers1[n];
-    for(int i=0; i<sizeof(arrayOfNumbers1)/4;i++){
+    int Array_3[n];
+    cout<<sizeof(arrayOfNumbers1)<<endl;
+    cout<<sizeof(Array_3)<<endl;
+    for(int i=0; i<n;i++){
         cout<<"Enter a number : ";
         cin>>arrayOfNumbers1[i];
     }
-
-    int Array_3[(sizeof(arrayOfNumbers1)/4)];
-    for(int i=0; i<sizeof(arrayOfNumbers1)/4;i++){
-        for(int j=i+1; j<sizeof(arrayOfNumbers1)/4;j++){
-            if(arrayOfNumbers1[i]==arrayOfNumbers1[j]){
-                Array_3[k]=arrayOfNumbers1[j];
-                k++;
-            }
-            else
-            {
-                Array_3[k]=arrayOfNumbers1[i];
-                k++;
-            }
-        }
+    sort(arrayOfNumbers1, arrayOfNumbers1+n);
+	for (int i=0;i<n;i++){
+        while((i<n-1)&&(arrayOfNumbers1[i]==arrayOfNumbers1[i+1]))
+            i++;
+            Array_3[f]=arrayOfNumbers1[i];
+            f++;
     }
-    if(k==0){
-        cout<<"Array is already unique!";
-    }else{
-        for(int i=0; i<k;i++){
-            cout<<Array_3[i]<<",";
-        }
+    for(int i=0; i<f;i++){
+        cout<<Array_3[i]<<",";
     }
-
+	return 0;
 }
